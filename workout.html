@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Tracker - Fitness Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <!-- <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Fitness Pro Logo">
+      <h1>Fitness Pro</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="bmi.html">BMI</a></li>
+        <li><a href="diet.html">Diet</a></li>
+        <li><a href="workout.html" class="active">Workout</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </nav>
+  </header> -->
+  <header class="minimal-header">
+    <div class="header-left">
+        <a href="index.html" class="logo">Fitness Pro</a>
+    </div>
+    <div class="header-right">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+</header>
+
+
+  <!-- WORKOUT SECTION -->
+  <section class="workout-section">
+    <h2>Workout Tracker</h2>
+    <p class="workout-intro">Track your workout duration, calories burned, and improve your fitness performance.</p>
+
+    <div class="workout-container">
+      <!-- User Input -->
+      <div class="workout-card">
+        <h3>Enter Your Details</h3>
+        <table class="workout-input-table">
+          <tr>
+            <td><label for="user-weight">Your Weight (kg):</label></td>
+            <td><input type="number" id="user-weight" placeholder="e.g. 70" min="1" required></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Exercise Selection -->
+      <div class="workout-card">
+        <h3>Select Your Exercises</h3>
+        <table class="workout-table">
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Exercise</th>
+              <th>MET Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><input type="checkbox" value="Walking"></td><td>Walking</td><td>3.8</td></tr>
+            <tr><td><input type="checkbox" value="Running"></td><td>Running</td><td>9.8</td></tr>
+            <tr><td><input type="checkbox" value="Pushups"></td><td>Pushups</td><td>8.0</td></tr>
+            <tr><td><input type="checkbox" value="Pullups"></td><td>Pullups</td><td>8.5</td></tr>
+            <tr><td><input type="checkbox" value="Rope Jumping"></td><td>Rope Jumping</td><td>12.0</td></tr>
+            <tr><td><input type="checkbox" value="Swimming"></td><td>Swimming</td><td>7.0</td></tr>
+            <tr><td><input type="checkbox" value="Weight Lifting"></td><td>Weight Lifting</td><td>6.0</td></tr>
+            <tr><td><input type="checkbox" value="Cycling"></td><td>Cycling</td><td>6.0</td></tr>
+            <tr><td><input type="checkbox" value="Plank"></td><td>Plank</td><td>4.0</td></tr>
+            <tr><td><input type="checkbox" value="Squats"></td><td>Squats</td><td>8.0</td></tr>
+            <tr><td><input type="checkbox" value="Yoga"></td><td>Yoga</td><td>2.5</td></tr>
+            <tr><td><input type="checkbox" value="Sitting"></td><td>Sitting</td><td>1.3</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="workout-buttons">
+        <button id="startWorkoutBtn" class="workout-btn start">Start Workout</button>
+        <button id="stopWorkoutBtn" class="workout-btn stop">Stop Workout</button>
+      </div>
+
+      <!-- Workout Timer -->
+      <div class="timer-display">
+        <h3>Workout Duration</h3>
+        <p id="workout-timer">00:00</p>
+      </div>
+
+      <!-- Calories Result -->
+      <div class="calories-display">
+        <h3>Calories Burned</h3>
+        <p id="calories-result">0 kcal</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Fitness Pro | All Rights Reserved</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

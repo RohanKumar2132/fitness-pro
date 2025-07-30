@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Diet Planner - Fitness Pro</title>
+  <style>
+    /* ===== GENERAL PAGE STYLING ===== */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8fbfd;
+      color: #333;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    header .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #007bff;
+      text-decoration: none;
+    }
+    header nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    header nav a:hover {
+      color: #007bff;
+    }
+
+    /* ===== SECTION ===== */
+    .section {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+    .section h2 {
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+    .section p {
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    /* ===== FORM ===== */
+    .diet-form {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .diet-form table {
+      width: 100%;
+      border-spacing: 10px;
+    }
+    .diet-form td {
+      padding: 8px;
+    }
+    .diet-form input, .diet-form select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .btn-secondary {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+      font-size: 1rem;
+    }
+    .btn-secondary:hover {
+      background: #0056b3;
+    }
+
+    /* ===== DIET OUTPUT TABLE ===== */
+    .diet-output {
+      margin-top: 20px;
+    }
+    .diet-output h3 {
+      margin-bottom: 10px;
+      color: #007bff;
+    }
+    table.diet-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table.diet-table th, table.diet-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    table.diet-table th {
+      background: #007bff;
+      color: white;
+    }
+    table.diet-table tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #555;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    }
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">Fitness Pro</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="bmi.html">BMI</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- AI DIET PLANNER SECTION -->
+  <section class="section">
+    <h2>AI Diet Planner</h2>
+    <p>Enter your details to get a personalized diet plan with an hourly schedule.</p>
+
+    <!-- FORM -->
+    <div class="diet-form">
+      <table>
+        <tr>
+          <td><label for="age">Age:</label></td>
+          <td><input type="number" id="age" placeholder="Enter age"></td>
+        </tr>
+        <tr>
+          <td><label for="gender">Gender:</label></td>
+          <td>
+            <select id="gender">
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="goal">Goal:</label></td>
+          <td>
+            <select id="goal">
+              <option value="">Select Goal</option>
+              <option value="weight-loss">Weight Loss</option>
+              <option value="muscle-gain">Muscle Gain</option>
+              <option value="maintenance">Maintenance</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="activity">Activity Level:</label></td>
+          <td>
+            <select id="activity">
+              <option value="">Select Activity Level</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button id="generateDietBtn" class="btn-secondary">Generate Diet Plan</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- OUTPUT -->
+    <div class="diet-output">
+      <h3>Your Hourly Diet Plan</h3>
+      <table class="diet-table">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Meal</th>
+            <th>Food</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody id="diet-plan-output">
+          <tr>
+            <td colspan="4">Please enter your details and click "Generate Diet Plan"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Fitness Pro | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    document.getElementById("generateDietBtn").addEventListener("click", () => {
+      const age = parseInt(document.getElementById("age").value);
+      const gender = document.getElementById("gender").value;
+      const goal = document.getElementById("goal").value;
+      const activity = document.getElementById("activity").value;
+      const dietOutput = document.getElementById("diet-plan-output");
+
+      if (!age || !gender || !goal || !activity) {
+        alert("⚠ Please fill in all fields.");
+        return;
+      }
+
+      let dietPlan = [];
+
+      if (goal === "weight-loss") {
+        dietPlan = [
+          { time: "7:00 AM", meal: "Breakfast", food: "Oatmeal + Green Tea", quantity: "1 bowl" },
+          { time: "10:00 AM", meal: "Snack", food: "Almonds + Apple", quantity: "10 almonds + 1 apple" },
+          { time: "1:00 PM", meal: "Lunch", food: "Grilled Chicken + Veggies", quantity: "200g" },
+          { time: "4:00 PM", meal: "Snack", food: "Greek Yogurt", quantity: "1 cup" },
+          { time: "7:00 PM", meal: "Dinner", food: "Salad + Boiled Eggs", quantity: "1 plate" }
+        ];
+      } 
+      else if (goal === "muscle-gain") {
+        dietPlan = [
+          { time: "7:00 AM", meal: "Breakfast", food: "Eggs + Toast + Milk", quantity: "4 eggs + 2 slices" },
+          { time: "10:00 AM", meal: "Snack", food: "Banana + Peanut Butter", quantity: "1 banana + 2 tbsp" },
+          { time: "1:00 PM", meal: "Lunch", food: "Chicken + Rice + Broccoli", quantity: "250g" },
+          { time: "4:00 PM", meal: "Snack", food: "Protein Shake", quantity: "1 glass" },
+          { time: "7:00 PM", meal: "Dinner", food: "Fish + Sweet Potato", quantity: "200g" }
+        ];
+      } 
+      else {
+        dietPlan = [
+          { time: "7:00 AM", meal: "Breakfast", food: "Greek Yogurt + Honey", quantity: "1 cup" },
+          { time: "10:00 AM", meal: "Snack", food: "Nuts + Fruit", quantity: "10 nuts + 1 fruit" },
+          { time: "1:00 PM", meal: "Lunch", food: "Quinoa + Veggies", quantity: "200g" },
+          { time: "4:00 PM", meal: "Snack", food: "Green Tea + Crackers", quantity: "1 cup + 4 pieces" },
+          { time: "7:00 PM", meal: "Dinner", food: "Grilled Tofu + Salad", quantity: "150g" }
+        ];
+      }
+
+      dietOutput.innerHTML = "";
+      dietPlan.forEach(item => {
+        dietOutput.innerHTML += `
+          <tr>
+            <td>${item.time}</td>
+            <td>${item.meal}</td>
+            <td>${item.food}</td>
+            <td>${item.quantity}</td>
+          </tr>
+        `;
+      });
+    });
+  </script>
+</body>
+</html>

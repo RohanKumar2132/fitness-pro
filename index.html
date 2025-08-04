@@ -35,13 +35,11 @@
       font-weight: bold;
       color: #007BFF;
       text-decoration: none;
-      white-space: nowrap;
     }
 
     .main-header nav {
       display: flex;
       gap: 30px;
-      flex-shrink: 0;
     }
 
     .main-header nav a {
@@ -51,27 +49,11 @@
       font-weight: 500;
       padding: 6px 10px;
       transition: color 0.3s ease;
-      white-space: nowrap;
     }
 
     .main-header nav a:hover,
     .main-header nav a.active {
       color: #007BFF;
-    }
-
-    /* Responsive fix for small screens */
-    @media (max-width: 900px) {
-      .main-header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
-      }
-
-      .main-header nav {
-        flex-wrap: wrap;
-        gap: 15px;
-        margin-top: 10px;
-      }
     }
 
     /* ===== HERO SECTION ===== */
@@ -82,13 +64,8 @@
       margin-top: 70px;
       overflow: hidden;
     }
-    .slideshow {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
     .slideshow img {
-      width: 100vw;
+      width: 100%;
       height: 90vh;
       object-fit: cover;
       position: absolute;
@@ -107,7 +84,6 @@
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.4);
-      z-index: 1;
     }
     .hero-content {
       position: absolute;
@@ -116,81 +92,106 @@
       transform: translate(-50%, -50%);
       text-align: center;
       color: white;
-      z-index: 2;
     }
     .hero-content h2 {
       font-size: 3rem;
-      margin-bottom: 10px;
     }
     .hero-content p {
       font-size: 1.2rem;
       margin-bottom: 20px;
     }
-    .btn-primary {
-      background: #007bff;
-      color: white;
-      text-decoration: none;
-      padding: 12px 25px;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-    .btn-primary:hover {
-      background: #0056b3;
-    }
 
-    /* ===== AI DIET PLANNER ===== */
-    .section {
-      max-width: 800px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-      text-align: center;
-    }
-    .section h2 {
-      color: #007bff;
-      margin-bottom: 20px;
-    }
-    .diet-form table {
-      width: 100%;
-      border-spacing: 10px;
-    }
-    .diet-form input, .diet-form select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-    .btn-secondary {
-      background: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 10px;
-      width: 100%;
-      font-size: 1rem;
-    }
-    .btn-secondary:hover {
-      background: #0056b3;
-    }
-    .diet-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    .diet-table th, .diet-table td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-    }
-    .diet-table th {
-      background: #007bff;
-      color: white;
-    }
+/* Leaderboard and Login Section */
+.leaderboard-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Prevent stretching both cards */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 50px auto;
+}
+
+/* Leaderboard */
+.leaderboard {
+  flex: 70%;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  height: 100%; /* Fixed height independent of login */
+}
+
+.leaderboard h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.leaderboard table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.leaderboard th, 
+.leaderboard td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.leaderboard th {
+  background: #007bff;
+  color: white;
+}
+
+/* Login Section */
+.login-section {
+  flex: 30%;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: height 0.3s ease;
+}
+
+.login-section h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.login-section input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.login-section button {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-section button:hover {
+  background: #0056b3;
+}
+
+.login-section p {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 10px;
+  cursor: pointer;
+  color: #007bff;
+}
+
+
 
     /* ===== FEATURES SECTION ===== */
     .features {
@@ -199,6 +200,7 @@
       gap: 20px;
       padding: 40px;
     }
+
     .card {
       background: white;
       flex: 1;
@@ -208,6 +210,7 @@
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
       text-align: center;
     }
+
     .btn-link {
       display: inline-block;
       margin-top: 10px;
@@ -216,7 +219,77 @@
       font-weight: bold;
     }
 
-    /* ===== FOOTER ===== */
+    /* CHATBOT */
+    .chatbot-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .chat-window {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 300px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .chat-header {
+      background: #007bff;
+      color: white;
+      padding: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .chat-status {
+      font-size: 12px;
+      color: #aee6a1;
+    }
+
+    .chat-messages {
+      height: 200px;
+      overflow-y: auto;
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+    }
+
+    .chat-input button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
     footer {
       background: white;
       text-align: center;
@@ -226,18 +299,11 @@
       color: #555;
       box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
     }
-    footer a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
 
-  <!-- FIXED HEADER -->
+  <!-- HEADER -->
   <header class="main-header">
     <div class="header-left">
       <a href="index.html" class="logo">Fitness Pro</a>
@@ -246,9 +312,11 @@
       <a href="index.html" class="active">Home</a>
       <a href="bmi.html">BMI</a>
       <a href="diet.html">Diet</a>
+      <a href="health.html">Health Tracker</a>
       <a href="workout.html">Workout</a>
       <a href="contact.html">Contact</a>
       <a href="about.html">About Us</a>
+      <a href="profile.html">Profile</a>
     </nav>
   </header>
 
@@ -262,70 +330,104 @@
     <div class="hero-content">
       <h2>Unleash Your Potential</h2>
       <p>Your journey to fitness starts here with AI-powered tools.</p>
-      <a href="#diet-planner" class="btn-primary">Start Now</a>
     </div>
   </section>
 
-  <!-- AI DIET PLANNER -->
-  <section id="diet-planner" class="section">
-    <h2>AI-Based Diet Planner</h2>
-    <div class="diet-form">
-      <table class="input-table">
-        <tr>
-          <td><label for="age">Age:</label></td>
-          <td><input type="number" id="age" min="10" max="100"></td>
-        </tr>
-        <tr>
-          <td><label for="gender">Gender:</label></td>
-          <td>
-            <select id="gender">
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td><label for="goal">Goal:</label></td>
-          <td>
-            <select id="goal">
-              <option value="weight-loss">Weight Loss</option>
-              <option value="muscle-gain">Muscle Gain</option>
-              <option value="maintenance">Maintenance</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td><label for="activity">Activity Level:</label></td>
-          <td>
-            <select id="activity">
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
-            </select>
-          </td>
-        </tr>
-      </table>
-      <button id="generateDietBtn" class="btn-secondary">Generate Diet Plan</button>
-    </div>
-
-    <div id="diet-result">
-      <h3>Your Personalized Diet Plan</h3>
-      <table class="diet-table">
+  <!-- LEADERBOARD + LOGIN -->
+  <section class="leaderboard-section">
+    <!-- LEADERBOARD -->
+    <div class="leaderboard">
+      <h2>🏆 Fitness Leaderboard</h2>
+      <table>
         <thead>
           <tr>
-            <th>Meal</th>
-            <th>Food</th>
-            <th>Quantity</th>
+            <th>Rank</th>
+            <th>User</th>
+            <th>Calories Burned</th>
           </tr>
         </thead>
-        <tbody id="diet-plan-output">
-          <tr><td colspan="3">Enter your details to generate a plan.</td></tr>
+        <tbody id="leaderboard-data">
+          <tr><td>1</td><td>Alex</td><td>4500 kcal</td></tr>
+          <tr><td>2</td><td>Priya</td><td>4200 kcal</td></tr>
+          <tr><td>3</td><td>Rahul</td><td>4000 kcal</td></tr>
         </tbody>
       </table>
     </div>
+
+    <!-- LOGIN / CREATE ACCOUNT -->
+<!-- LOGIN / CREATE ACCOUNT -->
+<div class="login-section">
+  <h2>Login</h2>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button id="login-btn">Login</button>
+  <p>Don't have an account? <a href="#" id="create-account-link">Create one</a></p>
+
+  <div id="create-account-form" style="display:none; margin-top:10px;">
+    <input type="text" id="new-username" placeholder="New Username">
+    <input type="password" id="new-password" placeholder="New Password">
+    <button id="create-btn">Create Account</button>
+  </div>
+</div>
+
+<script>
+  const loginBtn = document.getElementById('login-btn');
+  const createAccountLink = document.getElementById('create-account-link');
+  const createAccountForm = document.getElementById('create-account-form');
+  const createBtn = document.getElementById('create-btn');
+
+  // Show Create Account Form
+  createAccountLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    createAccountForm.style.display = createAccountForm.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Create Account Logic
+  createBtn.addEventListener('click', () => {
+    const newUsername = document.getElementById('new-username').value.trim();
+    const newPassword = document.getElementById('new-password').value.trim();
+
+    if (!newUsername || !newPassword) {
+      alert('Please enter username and password');
+      return;
+    }
+
+    const user = {
+      username: newUsername,
+      password: newPassword,
+      name: newUsername,
+      email: '',
+      age: '',
+      height: '',
+      weight: '',
+      gender: ''
+    };
+
+    localStorage.setItem('fitnessUser', JSON.stringify(user));
+    alert('Account created successfully! You can now login.');
+    createAccountForm.style.display = 'none';
+  });
+
+  // Login Logic
+  loginBtn.addEventListener('click', () => {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const savedUser = JSON.parse(localStorage.getItem('fitnessUser'));
+
+    if (!savedUser || savedUser.username !== username || savedUser.password !== password) {
+      alert('Invalid username or password!');
+      return;
+    }
+
+    localStorage.setItem('loggedInUser', username);
+    window.location.href = 'profile.html';
+  });
+</script>
+
+
   </section>
 
-  <!-- FEATURE SECTIONS -->
+  <!-- FEATURES -->
   <section class="features">
     <div class="card">
       <h3>BMI Calculator</h3>
@@ -347,25 +449,98 @@
   <!-- FOOTER -->
   <footer>
     <p>&copy; 2025 Fitness Pro. All rights reserved.</p>
-    <p>Follow us:
-      <a href="#">Facebook</a> | 
-      <a href="#">Instagram</a> | 
-      <a href="#">LinkedIn</a>
-    </p>
   </footer>
 
-  <!-- JS SCRIPT -->
+  <!-- CHATBOT -->
+  <button class="chatbot-button">💬</button>
+  <div class="chat-window" id="chat-window">
+    <div class="chat-header">
+      <span>AI Gym Trainer</span>
+      <span class="chat-status">● Active</span>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <p><strong>Trainer:</strong> Hi! I'm your virtual trainer. Ask me anything about workouts!</p>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chat-input" placeholder="Type a message...">
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+
   <script>
-    // === SLIDESHOW FUNCTIONALITY ===
+    // === SLIDESHOW ===
     const slides = document.querySelectorAll('.slideshow img');
     let currentSlide = 0;
-
-    function changeSlide() {
+    setInterval(() => {
       slides[currentSlide].classList.remove('active');
       currentSlide = (currentSlide + 1) % slides.length;
       slides[currentSlide].classList.add('active');
-    }
-    setInterval(changeSlide, 4000);
+    }, 4000);
+
+    // === CHATBOT ===
+    const chatButton = document.querySelector('.chatbot-button');
+    const chatWindow = document.getElementById('chat-window');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    chatButton.addEventListener('click', () => {
+      chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    sendBtn.addEventListener('click', () => {
+      const userMessage = chatInput.value.trim();
+      if (!userMessage) return;
+      chatMessages.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
+      chatInput.value = '';
+      setTimeout(() => {
+        const aiResponses = [
+          "Try 3 sets of squats for a great leg workout!",
+          "Don't forget to warm up before lifting heavy weights!",
+          "Stay hydrated and aim for 8 glasses of water daily.",
+          "Focus on form, not just weight, to avoid injuries."
+        ];
+        const aiReply = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+        chatMessages.innerHTML += `<p><strong>Trainer:</strong> ${aiReply}</p>`;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 700);
+    });
+
+    // === LOGIN & CREATE ACCOUNT ===
+    const loginBtn = document.getElementById('login-btn');
+    const createAccountLink = document.getElementById('create-account-link');
+    const createAccountForm = document.getElementById('create-account-form');
+    const createBtn = document.getElementById('create-btn');
+
+    createAccountLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      createAccountForm.style.display = createAccountForm.style.display === 'block' ? 'none' : 'block';
+    });
+
+    loginBtn.addEventListener('click', () => {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (username && password) {
+        alert(`Welcome back, ${username}!`);
+      } else {
+        alert('Please enter valid login credentials.');
+      }
+    });
+
+    createBtn.addEventListener('click', () => {
+      const newUsername = document.getElementById('new-username').value.trim();
+      const newPassword = document.getElementById('new-password').value.trim();
+
+      if (newUsername && newPassword) {
+        alert(`Account created successfully for ${newUsername}! You can now log in.`);
+        createAccountForm.style.display = 'none';
+      } else {
+        alert('Please fill in all fields to create an account.');
+      }
+    });
   </script>
 </body>
 </html>
+
+

@@ -9,22 +9,6 @@
 <body>
 
   <!-- HEADER -->
-  <!-- <header>
-    <div class="logo">
-      <img src="images/logo.png" alt="Fitness Pro Logo">
-      <h1>Fitness Pro</h1>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="bmi.html">BMI</a></li>
-        <li><a href="diet.html">Diet</a></li>
-        <li><a href="workout.html" class="active">Workout</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="about.html">About Us</a></li>
-      </ul>
-    </nav>
-  </header> -->
   <header class="minimal-header">
     <div class="header-left">
         <a href="index.html" class="logo">Fitness Pro</a>
@@ -33,8 +17,7 @@
         <a href="index.html">Home</a>
         <a href="contact.html">Contact Us</a>
     </div>
-</header>
-
+  </header>
 
   <!-- WORKOUT SECTION -->
   <section class="workout-section">
@@ -85,6 +68,7 @@
       <div class="workout-buttons">
         <button id="startWorkoutBtn" class="workout-btn start">Start Workout</button>
         <button id="stopWorkoutBtn" class="workout-btn stop">Stop Workout</button>
+        <button id="resetWorkoutBtn" class="workout-btn reset">Reset Workout</button>
       </div>
 
       <!-- Workout Timer -->
@@ -100,6 +84,25 @@
       </div>
     </div>
   </section>
+  <!-- SLEEP MONITORING SECTION -->
+<section class="sleep-section">
+  <h2>Sleep Monitoring</h2>
+  <p class="sleep-intro">Track your daily sleep hours and improve your recovery.</p>
+
+  <div class="sleep-container">
+    <div class="sleep-card">
+      <label for="sleep-hours">Enter Sleep Hours:</label>
+      <input type="number" id="sleep-hours" placeholder="e.g. 7" min="0" max="24">
+      <button id="track-sleep-btn" class="sleep-btn">Track Sleep</button>
+    </div>
+
+    <div class="sleep-result">
+      <h3>Sleep Report</h3>
+      <p id="sleep-feedback">Enter your sleep hours to get feedback.</p>
+    </div>
+  </div>
+</section>
+
 
   <!-- FOOTER -->
   <footer>

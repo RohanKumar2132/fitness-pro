@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Fitness Pro</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8fbfd;
+      color: #333;
+    }
+
+    /* ===== HEADER ===== */
+    .main-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+    .main-header .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #007BFF;
+      text-decoration: none;
+    }
+    .main-header nav {
+      display: flex;
+      gap: 30px;
+    }
+    .main-header nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 6px 10px;
+      transition: color 0.3s ease;
+    }
+    .main-header nav a:hover,
+    .main-header nav a.active {
+      color: #007BFF;
+    }
+
+    /* ===== PROFILE CONTAINER ===== */
+    .profile-container {
+      max-width: 1200px;
+      margin: 120px auto 50px;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    .profile-header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid #007bff;
+      object-fit: cover;
+    }
+    .profile-header h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #007bff;
+    }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .card {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #007bff;
+    }
+    .card input {
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    .card button {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .card button:hover {
+      background: #0056b3;
+    }
+    .logout-btn {
+      background: red !important;
+      margin-top: 15px;
+    }
+
+    /* PROGRESS SECTION */
+    .progress-item {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+    .progress-value {
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <a href="index.html" class="logo">Fitness Pro</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="bmi.html">BMI</a>
+      <a href="workout.html">Workout</a>
+      <a href="health.html">Health Tracker</a>
+      <a href="profile.html" class="active">Profile</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- PROFILE CONTENT -->
+  <div class="profile-container">
+    <div class="profile-header">
+      <img id="profile-photo" src="default-profile.png" alt="Profile Photo">
+      <h2 id="user-name">User Profile</h2>
+    </div>
+
+    <div class="profile-grid">
+      <!-- USER INFO -->
+      <div class="card">
+        <h3>Personal Details</h3>
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="number" id="age" placeholder="Age">
+        <input type="number" id="height" placeholder="Height (cm)">
+        <input type="number" id="weight" placeholder="Weight (kg)">
+        <input type="text" id="gender" placeholder="Gender">
+        <label>Upload Photo:</label>
+        <input type="file" id="photo-upload" accept="image/*">
+        <button id="save-btn">Save Profile</button>
+        <button class="logout-btn" id="logout-btn">Logout</button>
+      </div>
+
+      <!-- PROGRESS DATA -->
+      <div class="card">
+        <h3>Your Progress</h3>
+        <div class="progress-item">Workout Sessions: <span id="workout-progress" class="progress-value">0</span></div>
+        <div class="progress-item">Calories Burned: <span id="calories-progress" class="progress-value">0 kcal</span></div>
+        <div class="progress-item">Water Intake (Today): <span id="water-progress" class="progress-value">0 L</span></div>
+        <div class="progress-item">Steps (Today): <span id="steps-progress" class="progress-value">0</span></div>
+        <div class="progress-item">Sleep (Last Night): <span id="sleep-progress" class="progress-value">0 hrs</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem('fitnessUser'));
+    const loggedInUser = localStorage.getItem('loggedInUser');
+
+    if (!loggedInUser || !user || user.username !== loggedInUser) {
+      alert('You must log in first!');
+      window.location.href = 'index.html';
+    } else {
+      document.getElementById('user-name').textContent = `${user.name || user.username}'s Profile`;
+      document.getElementById('name').value = user.name || '';
+      document.getElementById('email').value = user.email || '';
+      document.getElementById('age').value = user.age || '';
+      document.getElementById('height').value = user.height || '';
+      document.getElementById('weight').value = user.weight || '';
+      document.getElementById('gender').value = user.gender || '';
+
+      if (user.photo) {
+        document.getElementById('profile-photo').src = user.photo;
+      }
+
+      // Load progress data
+      document.getElementById('workout-progress').textContent = user.workouts || 0;
+      document.getElementById('calories-progress').textContent = (user.calories || 0) + ' kcal';
+      document.getElementById('water-progress').textContent = (user.water || 0) + ' L';
+      document.getElementById('steps-progress').textContent = user.steps || 0;
+      document.getElementById('sleep-progress').textContent = (user.sleep || 0) + ' hrs';
+    }
+
+    document.getElementById('save-btn').addEventListener('click', () => {
+      user.name = document.getElementById('name').value;
+      user.email = document.getElementById('email').value;
+      user.age = document.getElementById('age').value;
+      user.height = document.getElementById('height').value;
+      user.weight = document.getElementById('weight').value;
+      user.gender = document.getElementById('gender').value;
+      localStorage.setItem('fitnessUser', JSON.stringify(user));
+      alert('Profile updated successfully!');
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      localStorage.removeItem('loggedInUser');
+      window.location.href = 'index.html';
+    });
+
+    // Profile photo upload
+    document.getElementById('photo-upload').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          user.photo = reader.result;
+          localStorage.setItem('fitnessUser', JSON.stringify(user));
+          document.getElementById('profile-photo').src = user.photo;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
